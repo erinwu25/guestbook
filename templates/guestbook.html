@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<style>
+
+body{
+  background-color: #f1d8ff;
+}
+
+#text{
+  color: purple;
+}
+
+.message{
+  height = auto;
+  width: auto;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 50px;
+}
+
+</style>
+<body>
+<title>Guestbook</title>
+<h1 id="text">Guestbook</h1> <p>
+{% if current_user %}
+<h3 id="text">Welcome, {{current_user}}!</h3>
+<form action="/" method="post">
+  <input name="content"><p>
+  <button>Sign</button>
+</form>
+<a href="{{logout_url}}">Log out</a><p>
+{% else %}
+  <a href="{{login_url}}">Log in here</a>
+
+{% endif %}
+
+{% for message in messages %}
+  <div class="message" style="border-color: #fae2ff; background-color: #fae2ff; padding: 5px;">
+    <p>{{message.email}}:
+    <p>{{message.content}}
+  </div>
+  <p>
+
+{% endfor %}
+
+</body>
